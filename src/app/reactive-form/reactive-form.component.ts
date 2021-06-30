@@ -11,11 +11,9 @@ export class ReactiveFormComponent implements OnInit {
   registerForm!: FormGroup;
   forUsername=['supriya','supi'];
 
-
  get hobbyControlss(){
    return (<FormArray>this.registerForm.get('hobbies')).controls;
-
-}
+ }
   constructor() { }
 
   ngOnInit(): void {
@@ -40,8 +38,8 @@ export class ReactiveFormComponent implements OnInit {
 
   }
 forUsernamefun(control:FormControl):{[s:string]:boolean}{
-if (this.forUsername.indexOf(control.value) ){
-  return{'name':true};
+if (this.forUsername.indexOf(control.value)){
+  return {'name':true};
 }
 return {'name':false};
 }

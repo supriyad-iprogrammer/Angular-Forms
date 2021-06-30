@@ -8,6 +8,8 @@
             <input type="text" id="username" formControlName="username" class="form-control">
             <span class="help-block"
               *ngIf="!registerForm.get('userData.username')!.valid && registerForm.get('userData.username')!.touched">
+<!--
+            <span *ngIf="registerForm.get('userData.username')!.errors('name')" >Enter Valid Username</span> -->
               Please enter Name</span>
 
           </div>
