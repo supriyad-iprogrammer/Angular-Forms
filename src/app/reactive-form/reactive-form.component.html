@@ -28,13 +28,13 @@
             {{gender}}
           </label>
         </div>
-      <!-- <div formArrayName="hobbies">
+      <div formArrayName="hobbies">
           <h3>Add Hobby</h3>
           <button class="btn btn-success" type="button" (click)="addHobby()">Add Hobbies</button>
-          <div class="form-group" *ngFor="let hobbyControl of registerForm.get('hobbies')!.controls; let i = index">
-            <input type="text" class="form-control" formControlName="i">
+          <div class="form-group" style="margin-top: 10px;" *ngFor="let hobbyControl of hobbyControlss; let i = index">
+            <input type="text" class="form-control" [formControlName]="i">
           </div>
-        </div> -->
+        </div>
         <span *ngIf="!registerForm.valid && registerForm.touched">
           Please data</span>
         <br>

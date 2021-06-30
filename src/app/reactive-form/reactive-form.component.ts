@@ -9,14 +9,20 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 export class ReactiveFormComponent implements OnInit {
   genders = ['Male', 'Female'];
   registerForm!: FormGroup;
+  forUsername=['supriya','supi'];
 
+
+ get hobbyControlss(){
+   return (<FormArray>this.registerForm.get('hobbies')).controls;
+
+}
   constructor() { }
 
   ngOnInit(): void {
 
     this.registerForm = new FormGroup({
       'userData':new FormGroup({
-        'username': new FormControl(null, Validators.required),
+        'username': new FormControl(null, [Validators.required, this.forUsernamefun.bind(this)]),
         'email': new FormControl(null,[Validators.required, Validators.email]),
       }),
 
@@ -29,10 +35,14 @@ export class ReactiveFormComponent implements OnInit {
     console.log(this.registerForm)
   }
   addHobby(){
-
-
-    const controls = new FormControl(null, Validators.required);
-    (<FormArray>this.registerForm.get('hobbies')).push(controls);
+    const control= new FormControl(null, Validators.required);
+   (<FormArray>this.registerForm.get('hobbies')).push(control)
 
   }
+forUsernamefun(control:FormControl):{[s:string]:boolean}{
+if (this.forUsername.indexOf(control.value) ){
+  return{'name':true};
+}
+return {'name':false};
+}
 }
